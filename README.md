@@ -16,4 +16,4 @@ You can configure the mod by modifing the values in `config.toml`
 
 # Installation
 * Install [DivaModLoader](https://github.com/blueskythlikesclouds/DivaModLoader)
-* Download the latest release of this [mod](https://github.com/Renzo904/BetterDivaPractice/releases/latest), and drag the folder `BetterDivaPractice` into the `mods` folder
+* Download the latest release of this mod from [here](https://github.com/Renzo904/BetterDivaPractice/releases/latest) or from [GameBanana](https://gamebanana.com/mods/482730), and drag the folder `BetterDivaPractice` into the `mods` folder
