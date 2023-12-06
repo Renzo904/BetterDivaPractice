@@ -139,7 +139,7 @@ extern "C"
         
         //Load configs
         auto config = toml::parse_file("config.toml");
-        rewindTime = config["rewind_seconds"].value_or(10);
+        rewindTime = config["step_seconds"].value_or(10);
         restartOffset = config["restart_offset"].value_or(1.5f);
         
         //Rewrite the rewind cursor instruction acording to config.toml
