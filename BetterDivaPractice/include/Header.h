@@ -6,8 +6,8 @@ struct practiceCursor
     bool b3;
     __int16 b4;
     int lastcheckpoint;
-    float b6;
-    float b7;
+    float currentSongPosition;
+    float songLenght;
     float b8;
     int cursorPosition;
 };

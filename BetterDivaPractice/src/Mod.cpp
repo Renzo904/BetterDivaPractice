@@ -74,7 +74,7 @@ HOOK(void, __fastcall, _SetCursor, sigSetCursor(), practiceCursor* a1)
     char cVar1;
     long long uVar3;
 
-    float songLenght = *(float*)0x1412EF668;
+    
 
     uVar3 = FUN_1402ac970(0);
     cVar1 = FUN_1402aaf80(uVar3, 0x11);
@@ -84,7 +84,7 @@ HOOK(void, __fastcall, _SetCursor, sigSetCursor(), practiceCursor* a1)
         if (cVar1 == '\0') {
             cVar1 = FUN_1402aaf80(uVar3, 0x10);
             if (cVar1 != '\0') {
-                checkpointposition = *(float*)0x1412EE340; //Set cursor to current position
+                checkpointposition = a1->currentSongPosition; //Set cursor to current position
             }
         }
         else {
@@ -93,8 +93,8 @@ HOOK(void, __fastcall, _SetCursor, sigSetCursor(), practiceCursor* a1)
                 
                 writeInstruction(rewindTime * -1);
                 checkpointposition = checkpointposition + (float)rewindTime; //forward cursor
-                if (checkpointposition > songLenght - rewindTime) {
-                    checkpointposition = songLenght - rewindTime;
+                if (checkpointposition > a1->songLenght - rewindTime) {
+                    checkpointposition = a1->songLenght - rewindTime;
                     a1->cursorPosition = (int)checkpointposition;
                     writeInstruction(0);
                 }
