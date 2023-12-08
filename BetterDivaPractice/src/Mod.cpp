@@ -90,22 +90,17 @@ HOOK(void, __fastcall, _SetCursor, sigSetCursor(), practiceCursor* a1)
         else {
             if (GetKeyState(VK_SHIFT) & 0x8000)
             {
-                
-                writeInstruction(rewindTime * -1);
                 checkpointposition = checkpointposition + (float)rewindTime; //forward cursor
                 if (checkpointposition > a1->songLenght - rewindTime) {
                     checkpointposition = a1->songLenght - rewindTime;
-                    a1->cursorPosition = (int)checkpointposition;
-                    writeInstruction(0);
                 }
-
             }
             else 
             {
-                writeInstruction(rewindTime);
                 checkpointposition = checkpointposition - (float)rewindTime; //rewind cursor
             }
         }
+        a1->cursorPosition = (int)floor(checkpointposition);
     }
  
 
@@ -143,6 +138,6 @@ extern "C"
         restartOffset = config["restart_offset"].value_or(1.5f);
         
         //Rewrite the rewind cursor instruction acording to config.toml
-        writeInstruction(rewindTime);
+        writeInstruction(0);
     }
 }
