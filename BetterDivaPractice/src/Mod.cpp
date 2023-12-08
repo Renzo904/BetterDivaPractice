@@ -66,6 +66,27 @@ SIG_SCAN
 )
 
 
+SIG_SCAN
+(
+    sigDrawCursor,
+    0x140640160,
+    "\x40\x53\x48\x83\xEC\x00",
+    "xxxxx?"
+)
+
+HOOK(void, __fastcall, _DrawCursor, sigDrawCursor(), practiceCursor* a1, long long param_2) 
+{
+    void (*FUN_140621b10)(long long, float) = (void (*)(long long, float))0x140621b10;
+    void (*FUN_1401af030)(long long, float) = (void (*)(long long, float))0x1401af030;
+    
+    if (0.0 < a1->songLenght) {
+        FUN_140621b10(param_2, (checkpointposition / a1->songLenght) * 100.0);
+    }
+    FUN_1401af030(param_2, 1);
+    return;
+}
+
+
 HOOK(void, __fastcall, _SetCursor, sigSetCursor(), practiceCursor* a1)
 {
     long long (*FUN_1402ac970)(int) = (long long(*)(int))0x1402ac970;
@@ -131,6 +152,7 @@ extern "C"
         INSTALL_HOOK(_SetRestart);
         INSTALL_HOOK(_SetCursor);
         INSTALL_HOOK(_SongPracticeStart);
+        INSTALL_HOOK(_DrawCursor);
         
         //Load configs
         auto config = toml::parse_file("config.toml");
