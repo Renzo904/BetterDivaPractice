@@ -119,6 +119,9 @@ HOOK(void, __fastcall, _SetCursor, sigSetCursor(), practiceCursor* a1)
             else 
             {
                 checkpointposition = checkpointposition - (float)rewindTime; //rewind cursor
+                if (checkpointposition < 0) {
+                    checkpointposition = 0;
+                }
             }
         }
         a1->cursorPosition = (int)floor(checkpointposition);
